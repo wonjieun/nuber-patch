@@ -1,7 +1,11 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
+const isDev = process.env.NODE_ENV === 'development';
+
 const client = new ApolloClient({
-  uri: 'https://flyby-gateway.herokuapp.com/',
+  uri: isDev
+    ? 'http://localhost:4000/graphql'
+    : 'https://flyby-gateway.herokuapp.com/',
   cache: new InMemoryCache(),
 });
 
