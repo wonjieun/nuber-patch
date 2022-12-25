@@ -1,6 +1,8 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache, makeVar } from '@apollo/client';
 
 const isDev = process.env.NODE_ENV === 'development';
+
+export const isLoggedIn = makeVar(Boolean(localStorage.getItem('jwt')));
 
 const client = new ApolloClient({
   uri: isDev
